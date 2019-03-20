@@ -61,6 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraSwitch.cs" />
+    <Compile Include="Assets\Scripts\CountManager.cs" />
+    <Compile Include="Assets\Scripts\DDBones.cs" />
+    <Compile Include="Assets\Scripts\DDCauldron.cs" />
+    <Compile Include="Assets\Scripts\DDChains.cs" />
+    <Compile Include="Assets\Scripts\DDRat.cs" />
+    <Compile Include="Assets\Scripts\DDSkull.cs" />
+    <Compile Include="Assets\Scripts\DDWebs.cs" />
     <None Include="Assets\dungeon\credit.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/naylanadre/Desktop/cmpm121/FinalProj/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
