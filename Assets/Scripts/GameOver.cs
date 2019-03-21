@@ -11,9 +11,9 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CountManager.counter == 5 && Input.GetKeyDown("space")) {
+        if (CountManager.counter >= 5 && Input.GetKeyDown("space")) {
             CountManager.counter = 0;
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene(0);
         }
     }
 }
