@@ -11,11 +11,18 @@ public class DDWebs : CountManager
     private Vector2 initialPosition;
     private Vector2 mousePosition;
     private float deltaX, deltaY;
+    public GameObject sixthClue;
+    public GameObject textbox8;
+    public GameObject seventhClue;
+    public GameObject textbox9;
 
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = transform.position;
+        seventhClue.SetActive(false);
+        textbox9.SetActive(false);
+
     }
 
     private void OnMouseDown()
@@ -38,17 +45,21 @@ public class DDWebs : CountManager
 
     private void OnMouseUp()
     {
-        if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
-            Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
-        {
+        //if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
+        //    Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
+        //{
             if (CountManager.counter == 4 && CountManager.cauldronBase == true)
             {
                 transform.position = new Vector2(itemPlace.position.x, itemPlace.position.y + 0.045f);
                 locked = true;
                 CountManager.counter++;
-                Debug.Log("locked!!!");
-            }
+                Debug.Log("4th locked!!!");
+                Destroy(sixthClue);
+                Destroy(textbox8);
+                seventhClue.SetActive(true);
+                textbox9.SetActive(true);
         }
+        //}
         else
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);

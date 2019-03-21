@@ -12,27 +12,18 @@ public class DDRat : CountManager
     private Vector2 initialPosition;
     private Vector2 mousePosition;
     private float deltaX, deltaY;
+    public GameObject thirdClue;
+    public GameObject textbox5;
+    public GameObject fourthClue;
+    public GameObject textbox6;
+
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = transform.position;
+        fourthClue.SetActive(false);
+        textbox6.SetActive(false);
     }
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    //if (selected == true) {
-    //    //    if (!locked) {
-    //    //    Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    //    transform.position = new Vector2(cursorPos.x, cursorPos.y);
-    //    //    }
-    //    //}
-
-    //    //if (Input.GetMouseButtonUp(0)) {
-
-    //    //    selected = false;
-    //    //}
-    //}
 
     private void OnMouseDown() {
         if (!locked) {
@@ -49,17 +40,21 @@ public class DDRat : CountManager
     }
 
     private void OnMouseUp() {
-        if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
-            Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
-        {
-            if (CountManager.counter < 2 && CountManager.cauldronBase == true)
+        //if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
+        //    Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
+        //{
+        if (CountManager.cauldronBase && CountManager.fireOn)
             {
                 transform.position = new Vector2(itemPlace.position.x, itemPlace.position.y + 0.045f);
                 locked = true;
                 CountManager.counter++;
-                Debug.Log("locked!!!");
-            }
+                Debug.Log("1st locked!!!");
+                Destroy(thirdClue);
+                Destroy(textbox5);
+                fourthClue.SetActive(true);
+                textbox6.SetActive(true);
         }
+        //}
         else
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);

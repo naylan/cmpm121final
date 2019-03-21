@@ -11,11 +11,17 @@ public class DDSkull : CountManager
     private Vector2 initialPosition;
     private Vector2 mousePosition;
     private float deltaX, deltaY;
+    public GameObject fourthClue;
+    public GameObject textbox6;
+    public GameObject fifthClue;
+    public GameObject textbox7;
 
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = transform.position;
+        fifthClue.SetActive(false);
+        textbox7.SetActive(false);
     }
 
     private void OnMouseDown()
@@ -38,16 +44,21 @@ public class DDSkull : CountManager
 
     private void OnMouseUp()
     {
-        if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
-            Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
-        {
+        //if (Mathf.Abs(transform.position.x - itemPlace.position.x) <= 0.1f &&
+        //    Mathf.Abs(transform.position.y - itemPlace.position.y) <= 0.1f)
+        //{
             if (CountManager.counter == 2 && CountManager.cauldronBase == true)
             {
                 transform.position = new Vector2(itemPlace.position.x, itemPlace.position.y + 0.045f);
                 locked = true;
                 CountManager.counter++;
-            }
+                Debug.Log("2nd locked!!!");
+                Destroy(fourthClue);
+                Destroy(textbox6);
+                fifthClue.SetActive(true);
+                textbox7.SetActive(true);
         }
+        //}
         else
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
